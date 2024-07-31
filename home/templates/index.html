@@ -1,3 +1,4 @@
+<!-- templates/weather/index.html -->
 <!doctype html>
 <html lang="en">
 
@@ -87,6 +88,11 @@
 
         <div class="weather-info my-3" id="weather">
 
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'store_weather' %}" class="btn btn-primary">Store Weather Data</a>
+            <a href="{% url 'weather_history' %}" class="btn btn-secondary">View Weather History</a>
         </div>
     </div>
 

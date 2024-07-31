@@ -1,0 +1,80 @@
+<!-- templates/weather/weather_history.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather History</title>
+    <style>
+        body {
+            background-color: #fbb13c;
+            color: white;
+        }
+        .weather-cont {
+            width: 35rem;
+            background-color: #18c3fb;
+            border: 0.35rem solid white;
+            border-radius: 1rem;
+            padding: 1rem 0.8rem;
+            margin: auto;
+            margin-top: 2rem;
+        }
+        .city-search {
+            position: relative;
+            width: 20em;
+            margin: auto;
+        }
+        .city-search input {
+            font-weight: 600;
+        }
+        .location {
+            position: absolute;
+            left: 0.5em;
+            top: 0.5em;
+        }
+        .city-name {
+            font-size: 1.5em;
+        }
+        .temp {
+            font-weight: bold;
+            font-size: 2.5em;
+        }
+        .temp-details {
+            width: 22em;
+            margin: auto;
+        }
+        .temp-details p {
+            font-weight: 600;
+        }
+        .temp-extra p {
+            margin-bottom: 0;
+        }
+        .temp-div p {
+            margin-bottom: 0;
+        }
+        .error-msg {
+            font-size: 2em;
+            color: red;
+            font-weight: bold;
+        }
+        @media screen and (max-width:600px) {
+            .weather-cont {
+                width: auto;
+                margin: auto 1rem;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather History for {{ city }}</h1>
+    <form method="GET" action="{% url 'weather_history' %}">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Get History</button>
+    </form>
+    <ul>
+        {% for record in history %}
+        <li>{{ record.timestamp }}: {{ record.temperature }}°C, {{ record.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
